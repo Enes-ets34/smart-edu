@@ -1,0 +1,27 @@
+{
+  "name": "smart-edu",
+  "version": "1.0.0",
+  "description": "smart edu is online courses platform.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "ejs",
+    "nodejs",
+    "js",
+    "html",
+    "css",
+    "education",
+    "courses"
+  ],
+  "author": "Enes Taha Sari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
