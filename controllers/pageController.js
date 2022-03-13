@@ -23,3 +23,8 @@ exports.getTeachersPage = (req, res) => {
     page_name: "teachers",
   });
 };
+exports.getCoursesPage = (req, res) => {
+  res.status(200).render("courses", {
+    page_name: "courses",
+  });
+};
