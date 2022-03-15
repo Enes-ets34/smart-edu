@@ -21,6 +21,13 @@ const CourseSchema = new Schema({
     type: String,
     unique: true,
   },
+  thumbnail:{
+    type:String
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+  },
 });
 
 CourseSchema.pre("validate", function (next) {

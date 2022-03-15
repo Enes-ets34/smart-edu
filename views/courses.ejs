@@ -111,7 +111,7 @@
                 <div class="col-lg-4 col-md-4 col-12 mb-5">
 					<div class="course-item">
 						<div class="image-blog">
-							<img src="images/blog_1.jpg" alt="" class="img-fluid">
+							<img src="<%= courses[i].thumbnail%>" alt="" class="img-fluid">
 						</div>
 						<div class="course-br">
 							<div class="course-title">
@@ -134,7 +134,7 @@
 							<ul>
 								<li><i class="fa fa-calendar" aria-hidden="true"></i> <%= courses[i].created_at %></li>
 								<li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
-								<li><i class="fa fa-book" aria-hidden="true"></i> 7 Books</li>
+								<li><i class="fa fa-book" aria-hidden="true"></i> <%= courses[i].category %></li>
 							</ul>
 						</div>
 					</div>
@@ -158,12 +158,10 @@
 					<div class="widget-categories">
 						<h3 class="widget-title">Categories</h3>
 						<ul>
-							<li><a href="#">Political Science</a></li>
-							<li><a href="#">Business Leaders Guide</a></li>
-							<li><a href="#">Become a Product Manage</a></li>
-							<li><a href="#">Language Education</a></li>
-							<li><a href="#">Micro Biology</a></li>
-							<li><a href="#">Social Media Management</a></li>
+							<% for (let i=0; i< categories.length; i++) { %>
+							<li><a href="/courses?categories=<%= categories[i].slug %>"><%= categories[i].title %></a></li>
+							
+							<%  } %>
 						</ul>
 					</div>
 					<div class="widget-tags">
