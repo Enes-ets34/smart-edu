@@ -27,24 +27,31 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane active" id="Login">
-            <form role="form" class="form-horizontal">
+            <form
+              role="form"
+              method="POST"
+              action="users/login"
+              class="form-horizontal"
+            >
               <div class="form-group">
                 <div class="col-sm-12">
                   <input
                     class="form-control"
-                    id="email1"
-                    placeholder="Name"
-                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    type="email"
                   />
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-12">
                   <input
+                    name="password"
                     class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Email"
-                    type="email"
+                    id="password"
+                    placeholder="****"
+                    type="password"
                   />
                 </div>
               </div>
