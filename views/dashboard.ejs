@@ -1,0 +1,156 @@
+<%-include('partials/_header.ejs')-%>
+<body class="host_version"> 
+
+	<!-- Modal -->
+	<%-include('partials/_loginModal.ejs')-%>
+
+    <!-- LOADER -->
+	<div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END LOADER -->	
+
+    <!-- Start header -->
+	<%-include('partials/_navbar.ejs')-%>
+	<!-- End header -->
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Course Grid 2<span class="m_1">Lorem Ipsum dolroin gravida nibh vel velit.</span></h1>
+		</div>
+	</div>
+	
+  	
+	<div id="overviews" class="section wb">
+        <div class="container">
+            <div class="row"> 
+
+                <div class="col-lg-9 blog-post-single">	
+					<div class="blog-author">
+						<div class="author-bio">
+							<h3 class="author_name"><a href="#"><%=user.name%></a></h3>
+							<h5>CEO at <a href="#"><%=user.title%></a></h5>
+							<p class="author_det">
+								<%=user.bio%> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam quae rem doloribus modi molestiae distinctio mollitia aliquam iste numquam. Possimus molestias quis eos earum sed aliquid voluptate adipisci cum iure id facilis, doloribus architecto officia laudantium! Corrupti dignissimos omnis ipsam est ab tempora, perferendis maiores aperiam ad, nulla inventore molestiae.
+							</p>
+						</div>
+						<div class="author-desc">
+							<img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="about author">
+							<ul class="author-social">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-skype"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+				
+					<hr>
+
+					<% for (let i=0; i< 10; i++) { %>
+                <div class="col-lg-4 col-md-4 col-12 mb-5">
+					<div class="course-item">
+						<div class="image-blog">
+							<img src="#" alt="" class="img-fluid">
+						</div>
+						<div class="course-br">
+							<div class="course-title">
+								<h2><a href="" title="">course title</a></h2>
+							</div>
+							<div class="course-desc">
+								<p>course desc.</p>
+							</div>
+						
+							<div class="course-rating">
+								4.5
+								<i class="fa fa-star"></i>	
+								<i class="fa fa-star"></i>	
+								<i class="fa fa-star"></i>	
+								<i class="fa fa-star"></i>	
+								<i class="fa fa-star-half"></i>								
+							</div><small>	<i class="fa fa-user" aria-hidden="true"></i> Gokhan Kandemir</small>
+						</div>
+						<div class="course-meta-bot">
+							<ul>
+								<li><i class="fa fa-calendar" aria-hidden="true"></i> created at></li>
+								<li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
+								<li><i class="fa fa-book" aria-hidden="true"></i> category</li>
+							</ul>
+						</div>
+					</div>
+                </div><!-- end col -->
+				<% } %>
+	
+				</div>
+					
+                </div><!-- end col -->
+				<div class="col-lg-3 col-12 right-single">
+					<div class="widget-search">
+						<div class="site-search-area">
+							<form method="get" id="site-searchform" action="#">
+								<div>
+									<input class="input-text form-control" name="search-k" id="search-k" placeholder="Search keywords..." type="text">
+									<input id="searchsubmit" value="Search" type="submit">
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="widget-categories">
+						<h3 class="widget-title">Categories</h3>
+						<ul>
+							
+							<li><a href="">category title></a></li>
+							
+						
+						</ul>
+					</div>
+					<div class="widget-tags">
+						<h3 class="widget-title">Search Tags</h3>
+						<ul class="tags">
+							<li><a href="#"><b>business</b></a></li>
+							<li><a href="#"><b>jquery</b></a></li>
+							<li><a href="#">corporate</a></li>
+							<li><a href="#">portfolio</a></li>
+							<li><a href="#">css3</a></li>
+							<li><a href="#"><b>theme</b></a></li>
+							<li><a href="#"><b>html5</b></a></li>
+							<li><a href="#"><b>mysql</b></a></li>
+							<li><a href="#">multipurpose</a></li>
+							<li><a href="#">responsive</a></li>
+							<li><a href="#">premium</a></li>
+							<li><a href="#">javascript</a></li>
+							<li><a href="#"><b>Best jQuery</b></a></li>
+						</ul>
+					</div>
+				</div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
+
+	<%-include('partials/_footer.ejs')-%><!-- end footer -->
+
+    <div class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">                   
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">SmartEDU</a> Design By : <a href="https://html.design/">html design</a></p>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="/js/all.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="/js/custom.js"></script>
+
+</body>
+</html>

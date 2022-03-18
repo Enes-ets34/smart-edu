@@ -35,11 +35,17 @@
           <li class="nav-item <%= page_name ==='pricing' && 'active' %>">
             <a class="nav-link" href="/pricing">Pricing</a>
           </li>
+          <%if(userIN){%>
+          <li class="nav-item <%= page_name ==='dashboard' && 'active' %>">
+            <a class="nav-link" href="/users/dashboard">Dashboard</a>
+          </li>
+          <%}%>
           <li class="nav-item <%= page_name ==='contact' && 'active' %>">
             <a class="nav-link" href="/contact">Contact</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <%if(!userIN){%>
           <li>
             <a
               class="hover-btn-new log"
@@ -49,6 +55,13 @@
               ><span>Book Now</span></a
             >
           </li>
+          <%}%> <%if(userIN){%>
+          <li>
+            <a class="hover-btn-new log" href="/users/logout"
+              ><span>Logout</span></a
+            >
+          </li>
+          <%}%>
         </ul>
       </div>
     </div>

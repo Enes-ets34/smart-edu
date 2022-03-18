@@ -31,18 +31,17 @@ exports.getAllUsers = async (req, res) => {
     });
   }
 };
-exports.login =  (req, res) => {
+exports.login = (req, res) => {
   try {
     const { email, password } = req.body;
-     User.findOne({ email }, (err, user) => {
+    User.findOne({ email }, (err, user) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, same) => {
           if (same) {
             //USER SESSION
-            res.status(200).send({
-              message: "you are logged in",
-              user,
-            });
+            req.session.userID = user._id;
+
+            res.status(200).redirect("/users/dashboard");
           }
         });
       }
@@ -53,4 +52,27 @@ exports.login =  (req, res) => {
       message: "bad request",
     });
   }
+};
+exports.logout = (req, res) => {
+  try {
+    req.session.destroy(() => {
+      res.status(200).redirect("/");
+    });
+    console.log("kullanici cikis yapti");
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: "bad request",
+    });
+  }
+};
+exports.dashboard = async (req, res) => {
+  const userId = req.session.userID;
+  await User.findOne({ _id: userId }, (err, user) => {
+    res.status(200).render("dashboard", {
+      page_name: "dashboard",
+      user,
+    });
+    console.log("user :>> ", user);
+  });
 };
