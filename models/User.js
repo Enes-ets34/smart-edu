@@ -17,6 +17,24 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  title: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
+  website: {
+    type: String,
+  },
+  github: {
+    type: String,
+  },
+  linkedin: {
+    type: String,
+  },
+  contact: {
+    type: Array,
+  },
 });
 
 UserSchema.pre("save", function (next) {

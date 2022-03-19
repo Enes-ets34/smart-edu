@@ -73,6 +73,6 @@ exports.dashboard = async (req, res) => {
       page_name: "dashboard",
       user,
     });
-    console.log("user :>> ", user);
+    console.log('user :>> ', user);
   });
 };

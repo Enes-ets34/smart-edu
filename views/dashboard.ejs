@@ -33,26 +33,27 @@
 					<div class="blog-author">
 						<div class="author-bio">
 							<h3 class="author_name"><a href="#"><%=user.name%></a></h3>
-							<h5>CEO at <a href="#"><%=user.title%></a></h5>
+							<h5><%=user.title%></h5>
 							<p class="author_det">
-								<%=user.bio%> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam quae rem doloribus modi molestiae distinctio mollitia aliquam iste numquam. Possimus molestias quis eos earum sed aliquid voluptate adipisci cum iure id facilis, doloribus architecto officia laudantium! Corrupti dignissimos omnis ipsam est ab tempora, perferendis maiores aperiam ad, nulla inventore molestiae.
+								<%=user.bio%> 
 							</p>
 						</div>
 						<div class="author-desc">
 							<img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="about author">
 							<ul class="author-social">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-skype"></i></a></li>
+								
+								<li><a target="_blank" href="<%= user.linkedin %>"><i class="fa fa-linkedin"></i></a></li>
+								<li><a target="_blank" href="<%= user.github %>"><i class="fa fa-github"></i></a></li>
+								<li><a target="_blank" href="<%= user.website %>"><i class="fa fa-globe"></i></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="row">
-				
+					
 					<hr>
 
 					<% for (let i=0; i< 10; i++) { %>
-                <div class="col-lg-4 col-md-4 col-12 mb-5">
+                <div class="col-lg-4 col-md-4 col-12">
 					<div class="course-item">
 						<div class="image-blog">
 							<img src="#" alt="" class="img-fluid">
