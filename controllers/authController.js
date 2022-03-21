@@ -31,10 +31,10 @@ exports.getAllUsers = async (req, res) => {
     });
   }
 };
-exports.login = (req, res) => {
+exports.login =  (req, res) => {
   try {
     const { email, password } = req.body;
-    User.findOne({ email }, (err, user) => {
+     User.findOne({ email }, (err, user) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, same) => {
           if (same) {
@@ -54,25 +54,17 @@ exports.login = (req, res) => {
   }
 };
 exports.logout = (req, res) => {
-  try {
-    req.session.destroy(() => {
-      res.status(200).redirect("/");
-    });
-    console.log("kullanici cikis yapti");
-  } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: "bad request",
-    });
-  }
+  req.session.destroy(()=> {
+    res.redirect('/');
+  })
+  console.log("kullanici cikis yaptı");
 };
 exports.dashboard = async (req, res) => {
-  const userId = req.session.userID;
-  await User.findOne({ _id: userId }, (err, user) => {
+  await User.findOne({ _id: req.session.userID }, (err, user) => {
     res.status(200).render("dashboard", {
       page_name: "dashboard",
       user,
     });
-    console.log('user :>> ', user);
+    console.log("user :>> ", user);
   });
 };

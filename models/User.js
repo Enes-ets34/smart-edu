@@ -17,19 +17,15 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ["student", "teacher", "admin"],
+    default: "student",
+  },
   title: {
     type: String,
   },
   bio: {
-    type: String,
-  },
-  website: {
-    type: String,
-  },
-  github: {
-    type: String,
-  },
-  linkedin: {
     type: String,
   },
   contact: {

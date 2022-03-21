@@ -14,7 +14,7 @@ const userRoute = require("./routes/userRoute");
 const app = express();
 //DB Connect
 mongoose.connect("mongodb://localhost/smartedu-db").then(() => {
-  console.log("***DB CONNECTED***");
+  console.log("----DB CONNECTED----");
 });
 
 //Template Engines

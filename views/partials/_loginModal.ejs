@@ -78,7 +78,7 @@
             <form
               role="form"
               method="POST"
-              action="users/register"
+              action="users/signup"
               class="form-horizontal"
             >
               <div class="form-group">
@@ -113,11 +113,17 @@
                     type="password"
                   />
                 </div>
+                <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
+                  <select class="form-control" name="role">
+                    <option>student</option>
+                    <option>teacher</option>
+                  </select>
+                </div>
               </div>
               <div class="row">
                 <div class="col-sm-10">
                   <button
-                    type="button"
+                    type="submit"
                     class="btn btn-light btn-radius btn-brd grd1"
                   >
                     Save &amp; Continue
@@ -125,6 +131,7 @@
                   <button
                     type="button"
                     class="btn btn-light btn-radius btn-brd grd1"
+                    data-dismiss="modal"
                   >
                     Cancel
                   </button>
