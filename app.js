@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const ejs = require("ejs");
+const bodyParser = require("body-parser");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -11,11 +12,18 @@ const courseRoute = require("./routes/courseRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const userRoute = require("./routes/userRoute");
 
+
 const app = express();
 //DB Connect
-mongoose.connect("mongodb://localhost/smartedu-db").then(() => {
-  console.log("----DB CONNECTED----");
-});
+mongoose
+  .connect("mongodb://localhost/smartedu-db", {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("----DB CONNECTED----");
+  });
 
 //Template Engines
 app.set("view engine", "ejs");
@@ -24,6 +32,7 @@ app.set("view engine", "ejs");
 global.userIN = null;
 
 //Middlewares
+
 app.use(express.static("public"));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded

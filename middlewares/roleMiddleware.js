@@ -1,14 +1,15 @@
-module.exports = (roles) => {
-  console.log("hello role middleware");
+const User = require("../models/User");
 
-  return (req, res, next) => {
-    console.log(req.body.role);
-    const userRole = req.body.role;
+module.exports = async (req, res, next) => {
+  const roles = ["teacher", "admin"];
+  const user = await User.findOne({ _id: req.session.userID });
+  console.log("user :>> ", user.role);
 
-    if (roles.includes(userRole)) {
-      next();
-    } else {
-      return res.status(401).send("YOU CANT DO IT");
-    }
-  };
+  const userRole = user.role;
+  console.log("userRole :>> ", userRole);
+  if (roles.includes(userRole)) {
+    next();
+  } else {
+    return res.status(401).send("you cant do it");
+  }
 };

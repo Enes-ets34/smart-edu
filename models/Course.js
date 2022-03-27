@@ -21,8 +21,9 @@ const CourseSchema = new Schema({
     type: String,
     unique: true,
   },
-  thumbnail:{
-    type:String
+  thumbnail: {
+    type: String,
+    default: "../public/images/blog_1.jpg",
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,

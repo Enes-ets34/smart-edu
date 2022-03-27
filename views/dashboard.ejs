@@ -27,7 +27,58 @@
   	
 	<div id="overviews" class="section wb">
         <div class="container">
+			<!-- Button trigger modal -->
+	<div class="col-md-6 mx-auto">
+		<button type="button" class="btn btn-warning " data-toggle="modal" data-target="#exampleModal">
+			Launch demo modal
+				  </button>
+	</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form action="add-course" method="POST">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Kurs Adı</label>
+				<input type="text" class="form-control" id="coursename" aria-describedby="coursename" placeholder="Dünyanın en iyi kursu...">
+
+			  </div>
+			  <div class="form-group">
+				<label for="coursedescription">Açıklama</label>
+				<input type="text" class="form-control" id="coursedescription" placeholder="Bu kurs çok iyi...">
+			  </div>
+			  <div class="form-group">
+				<label for="category">Kategori</label>
+				<select id="category" class="form-control" name="category">
+					<% for (let i=0; i< categories.length; i++) { %>
+				  <option name="category" value="<%= categories[i]._id%>"><%= categories[i].title%></option>
+				  <% }%>
+
+				</select>
+			  </div>
+			  <div class="form-group">
+				<label for="thumbnail">Açıklama</label>
+				<input type="file" class="form-control" name="thumbnail" id="thumbnail">
+			  </div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-warning">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div>
             <div class="row"> 
+				
 
                 <div class="col-lg-9 blog-post-single">	
 					<div class="blog-author">

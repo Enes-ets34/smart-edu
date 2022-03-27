@@ -1,10 +1,11 @@
 const Course = require("../models/Course");
 const Category = require("../models/Category");
 const fs = require("fs");
-exports.createCourse = async (req, res) => {
 
-  res.send("kurs oluşturuldu")
-  return false
+exports.createCourse = async (req, res) => {
+  res.send("kurs oluşturuldu");
+  return false;
+
   const uploadDir = "public/thumbnails";
 
   if (!fs.existsSync(uploadDir)) {

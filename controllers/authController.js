@@ -1,5 +1,8 @@
 const User = require("../models/User");
+const Category = require("../models/Category");
+
 const bcrypt = require("bcrypt");
+
 exports.createUser = async (req, res) => {
   const user = await User.create(req.body);
   try {
@@ -31,10 +34,10 @@ exports.getAllUsers = async (req, res) => {
     });
   }
 };
-exports.login =  (req, res) => {
+exports.login = (req, res) => {
   try {
     const { email, password } = req.body;
-     User.findOne({ email }, (err, user) => {
+    User.findOne({ email }, (err, user) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, same) => {
           if (same) {
@@ -54,16 +57,18 @@ exports.login =  (req, res) => {
   }
 };
 exports.logout = (req, res) => {
-  req.session.destroy(()=> {
-    res.redirect('/');
-  })
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
   console.log("kullanici cikis yaptı");
 };
 exports.dashboard = async (req, res) => {
+  const categories = await Category.find();
   await User.findOne({ _id: req.session.userID }, (err, user) => {
     res.status(200).render("dashboard", {
       page_name: "dashboard",
       user,
+      categories,
     });
     console.log("user :>> ", user);
   });
