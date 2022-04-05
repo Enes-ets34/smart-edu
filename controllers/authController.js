@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Category = require("../models/Category");
+const Course = require("../models/Course");
 
 const bcrypt = require("bcrypt");
 
@@ -64,12 +65,17 @@ exports.logout = (req, res) => {
 };
 exports.dashboard = async (req, res) => {
   const categories = await Category.find();
-  await User.findOne({ _id: req.session.userID }, (err, user) => {
-    res.status(200).render("dashboard", {
-      page_name: "dashboard",
-      user,
-      categories,
-    });
-    console.log("user :>> ", user);
+ 
+  const user = await User.findOne({ _id: req.session.userID }).populate(
+    "courses"
+  );
+
+  res.status(200).render("dashboard", {
+    page_name: "dashboard",
+    user,
+    categories,
   });
+
+  console.log("user :>> ", user);
+  console.log("user.courses :>> ", user.courses);
 };

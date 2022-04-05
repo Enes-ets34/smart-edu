@@ -28,6 +28,7 @@
 	<div id="overviews" class="section wb">
         <div class="container">
 			<!-- Button trigger modal -->
+			<% if(user.role==="admin" ||user.role==="teacher"){%>
 	<div class="col-md-6 mx-auto">
 		<button type="button" class="btn btn-warning " data-toggle="modal" data-target="#exampleModal">
 			Launch demo modal
@@ -45,15 +46,16 @@
 		  </button>
 		</div>
 		<div class="modal-body">
-		  <form action="add-course" method="POST">
+		  <form action="/courses" method="POST" encType="multipart/form-data">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Kurs Adı</label>
-				<input type="text" class="form-control" id="coursename" aria-describedby="coursename" placeholder="Dünyanın en iyi kursu...">
+				<input type="text" class="form-control" id="coursename" name="title" aria-describedby="coursename" placeholder="Dünyanın en iyi kursu...">
 
 			  </div>
 			  <div class="form-group">
 				<label for="coursedescription">Açıklama</label>
-				<input type="text" class="form-control" id="coursedescription" placeholder="Bu kurs çok iyi...">
+				<input type="text" class="form-control" name="description" id="coursedescription" placeholder="Bu kurs çok iyi...">
+
 			  </div>
 			  <div class="form-group">
 				<label for="category">Kategori</label>
@@ -68,15 +70,16 @@
 				<label for="thumbnail">Açıklama</label>
 				<input type="file" class="form-control" name="thumbnail" id="thumbnail">
 			  </div>
+			  <div class="modal-footer my-2">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-warning">Save changes</button>
+			  </div>
 		  </form>
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-warning">Save changes</button>
 		</div>
 	  </div>
 	</div>
   </div>
+  			<% }%>
             <div class="row"> 
 				
 
@@ -103,18 +106,18 @@
 					
 					<hr>
 
-					<% for (let i=0; i< 10; i++) { %>
-                <div class="col-lg-4 col-md-4 col-12">
+					<% for (let i=0; i< user.courses.length; i++) { %>
+                <div class="col-lg-4 mt-5 col-md-4 col-12">
 					<div class="course-item">
 						<div class="image-blog">
-							<img src="#" alt="" class="img-fluid">
+							<img src="<%= user.courses[i].thumbnail%>" alt="" class="img-fluid">
 						</div>
 						<div class="course-br">
 							<div class="course-title">
-								<h2><a href="" title="">course title</a></h2>
+								<h2><a href="/courses/<%= user.courses[i].slug%>" title=""><%= user.courses[i].title%></a></h2>
 							</div>
 							<div class="course-desc">
-								<p>course desc.</p>
+								<p><%= user.courses[i].description%>.</p>
 							</div>
 						
 							<div class="course-rating">
@@ -124,14 +127,18 @@
 								<i class="fa fa-star"></i>	
 								<i class="fa fa-star"></i>	
 								<i class="fa fa-star-half"></i>								
-							</div><small>	<i class="fa fa-user" aria-hidden="true"></i> Gokhan Kandemir</small>
+							</div><small>	<i class="fa fa-user" aria-hidden="true"></i> <%= user.courses[i].user%></small>
 						</div>
 						<div class="course-meta-bot">
 							<ul>
-								<li><i class="fa fa-calendar" aria-hidden="true"></i> created at></li>
+								<li><i class="fa fa-calendar" aria-hidden="true"></i> <%= user.courses[i].createdAt%></li>
 								<li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
-								<li><i class="fa fa-book" aria-hidden="true"></i> category</li>
+								<li><i class="fa fa-book" aria-hidden="true"></i> <%= user.courses[i].category%></li>
 							</ul>
+							<form action="/courses/release" method="POST">
+								<input type="hidden" name="course_id" value="<%= user.courses[i]._id %>">
+								<button type="submit" class="btn btn-block btn-danger btn-sm">Release</button>
+							</form>
 						</div>
 					</div>
                 </div><!-- end col -->

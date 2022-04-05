@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 const ejs = require("ejs");
-const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -12,12 +12,11 @@ const courseRoute = require("./routes/courseRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const userRoute = require("./routes/userRoute");
 
-
 const app = express();
+
 //DB Connect
 mongoose
   .connect("mongodb://localhost/smartedu-db", {
-    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -27,6 +26,11 @@ mongoose
 
 //Template Engines
 app.set("view engine", "ejs");
+
+//Environment Variables
+dotenv.config({
+  path: "./config/config.env",
+});
 
 //Global Variables
 global.userIN = null;

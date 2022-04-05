@@ -34,14 +34,27 @@
 						</div>
 						<div class="post-content">
 							<div class="post-date">
+							<div >	
 								<span class="day">30</span>
 								<span class="month">Nov</span>
 							</div>
+							<%if (user && !(user.courses.includes(course._id))){%>
+							<form action="/courses/enroll" method="POST">
+								<button class="btn btn-warning btn-block mt-5">ENROLL</button>
+								<input type="hidden" value="<%= course._id%>" name="course">
+							</form>
+							<%}%>
+							<%if (user && (user.courses.includes(course._id))){%>
+							<form action="/courses/release" method="POST">
+								<button class="btn btn-danger btn-block mt-5">RELEASE</button>
+								<input type="hidden" value="<%= course._id%>" name="course">
+							</form>
+							<%}%>
+							</div>
 							<div class="meta-info-blog">
-								<span><i class="fa fa-calendar"></i> <a href="#"><%= course.created_at%></a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">Yazılım Geliştirme</a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">Frontend</a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">Javascript</a> </span>
+								<span><i class="fa fa-calendar"></i> <a href="#"><%= course.createdAt%></a> </span>
+								<span><i class="fa fa-tag"></i>  <a href="#"><%= course.category.title%></a> </span>
+							
 								<span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
 							</div>
 							<div class="blog-title">
@@ -49,16 +62,17 @@
 							</div>
 							<div class="blog-desc">
 								<%= course.description%>
+
 							</div>							
 						</div>
 					</div>
 					
 					<div class="blog-author">
 						<div class="author-bio">
-							<h3 class="author_name"><a href="#">Tom Jobs</a></h3>
-							<h5>CEO at <a href="#">SmartEDU</a></h5>
+							<h3 class="author_name"><a href="#"> <%= course.user.name%></a></h3>
+							<h5> <%= course.user.title%> </h5>
 							<p class="author_det">
-								Lorem ipsum dolor sit amet, consectetur adip, sed do eiusmod tempor incididunt  ut aut reiciendise voluptat maiores alias consequaturs aut perferendis doloribus omnis saperet docendi nec, eos ea alii molestiae aliquand.
+								<%= course.user.bio%>
 							</p>
 						</div>
 						<div class="author-desc">

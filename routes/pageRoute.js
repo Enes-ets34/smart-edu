@@ -10,6 +10,8 @@ router.route("/courses").post(courseController.createCourse);
 router.route("/about").get(pageController.getAboutPage);
 router.route("/teachers").get(pageController.getTeachersPage);
 router.route("/pricing").get(pageController.getPricingPage);
+
 router.route("/contact").get(pageController.getContactPage);
+router.route("/contact").post(pageController.sendEmail);
 
 module.exports = router;

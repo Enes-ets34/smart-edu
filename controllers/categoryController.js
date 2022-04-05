@@ -1,8 +1,8 @@
 const Category = require("../models/Category");
 
 exports.createCategory = async (req, res) => {
-  res.send("kategori olusturuldu.")
-  return false
+
+
   const category = await Category.create(req.body);
   try {
     res.status(201).json({
